@@ -1,0 +1,33 @@
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/history_image"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner"
+            android:clipToOutline="true"
+            android:src="@drawable/video_icon"/> <!-- Ensures the image is clipped to the shape -->
+
+        <TextView
+            android:id="@+id/history_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+</HorizontalScrollView>

@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Selected State (Filled) -->
+    <item android:state_selected="true"
+        android:drawable="@drawable/home_icon_filled" /> <!-- Filled icon -->
+
+    <!-- Default State (Outline) -->
+    <item android:drawable="@drawable/home_icon" />
+</selector>

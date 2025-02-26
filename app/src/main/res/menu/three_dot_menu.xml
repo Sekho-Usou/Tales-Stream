@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/save_filled_icon"
+        android:title="Save" />
+    <item
+        android:id="@+id/action_download"
+        android:title="Download"
+        android:icon="@drawable/download_icon"/>
+    <item
+        android:id="@+id/action_share"
+        android:title="Share"
+        android:icon="@drawable/share_icon"/>
+</menu>
