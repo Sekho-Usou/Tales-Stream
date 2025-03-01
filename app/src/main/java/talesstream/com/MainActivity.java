@@ -36,11 +36,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MenuItem homeBtn, searchBtn, exploreBtn, profileBtn;
-    private String[] folders = {"Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-            "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
-            "Maharashtra", "Madhya Pradesh", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha",
-            "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand",
-            "Uttar Pradesh", "West Bengal"};
+    private String[] folders = {"Nagaland"};
     private ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView;
@@ -66,13 +62,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));  // 2 columns in the grid
 
         // Set up Spinner
-        String[] country = {"Select State..", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-                "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
-                "Maharashtra", "Madhya Pradesh", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha",
-                "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand",
-                "Uttar Pradesh", "West Bengal"};
+        String[] tribe = {"Select Tribe..", "Ao", "Angami", "Chakhesang", "Chang",
+                "Khiamniungan", "Konyak", "Lotha", "Phom", "Pochury", "Rengma",
+                "Sangtam", "Sumi", "Yimkhiung", "Zeliang", "Tikhir", "Makury"};
 
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this, R.layout.spinner_item, country);
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this, R.layout.spinner_item, tribe);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(aa);
 

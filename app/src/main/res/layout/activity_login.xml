@@ -28,7 +28,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/tales_stream_icon"
+                android:src="@drawable/logots"
                 android:layout_marginStart="20dp" />
 
             <TextView
