@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -31,13 +32,13 @@ import talesstream.com.Fragments.MainFragment;
 import talesstream.com.Fragments.ProfileFragment;
 import talesstream.com.Fragments.SearchFragment;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MenuItem homeBtn, searchBtn, exploreBtn, profileBtn;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
     private String[] folders = {"Nagaland"};
     private ViewPager2 viewPager2;
+    private ProgressBar progressBar;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView;
     private Spinner spin;
@@ -51,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         // for status bar color
         Window window = getWindow();
         window.setStatusBarColor(getResources().getColor(R.color.black));
-
-        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout); // to refresh the page
 
         // Initialize Spinner
         spin = findViewById(R.id.spinner);
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         spin.setAdapter(aa);
 
         // Show progress bar while fetching videos
-        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
         initView();
@@ -103,25 +102,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void refreshData() {
-        // Example: Simulate a network refresh or data update
-        // Replace with your actual data refresh logic
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Stop the refresh animation once data is updated
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        }, 2000); // Simulating a 2-second data refresh delay
-    }
-
-    // For slide show
     private void banners() {
         List<SliderItems> sliderItems = new ArrayList<>();
-        sliderItems.add(new SliderItems(R.drawable.mizo));
-        sliderItems.add(new SliderItems(R.drawable.naga));
-        sliderItems.add(new SliderItems(R.drawable.assamese));
-        sliderItems.add(new SliderItems(R.drawable.tamil));
+        sliderItems.add(new SliderItems(R.drawable.sky_spirit));
+        sliderItems.add(new SliderItems(R.drawable.the_goddess));
+        sliderItems.add(new SliderItems(R.drawable.rice_beer));
+        sliderItems.add(new SliderItems(R.drawable.jina_and_etiben));
 
         // Initialize ViewPager2 and SliderAdapter
         viewPager2 = findViewById(R.id.viewpagerSlider);
@@ -145,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         slideHandler.postDelayed(slideRunnable, 3000);  // Start after 3 seconds
     }
 
-    // Runnable to handle the auto swipe
     private Runnable slideRunnable = new Runnable() {
         @Override
         public void run() {
@@ -192,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Delay setting the selected item to ensure the fragment updates first
-        new Handler().postDelayed(() -> updateActiveButton(), 100);
+        new Handler().postDelayed(this::updateActiveButton, 100);
     }
 
     private void updateActiveButton() {
